@@ -6,7 +6,6 @@ RUN sed -i 's/ main/ main contrib non-free security/g' /etc/apt/sources.list.d/*
   rm -rf /var/lib/apt/lists
 RUN cd / && git clone --recurse-submodules -j8 https://github.com/netham45/screamrouter.git && echo 12
 RUN pip3 install -r /screamrouter/requirements.txt --break-system-packages
-RUN cd /screamrouter/c_utils/libsamplerate && cmake . && make
 RUN ln -s /screamrouter/config/config.yaml /screamrouter/config.yaml
 RUN cd /screamrouter/c_utils && ./build.sh
 CMD cd /screamrouter && ./screamrouter.py
